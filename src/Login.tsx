@@ -13,9 +13,7 @@ export default function Login() {
     e.preventDefault();
 
     if (!name && !email) {
-      setError(
-        "Oops! Both name and email are required. Please enter name and email. Thank you :)"
-      );
+      setError("Oops! Both name and email are required.");
       return;
     } else if (!name) {
       setError("Please include name.");
@@ -35,13 +33,11 @@ export default function Login() {
       if (response.status === 200) {
         navigate("/search");
       } else {
-        setError(
-          "Sorry, that did not work. Please check your information and try again."
-        );
+        setError("Sorry, that did not work. Please try again.");
       }
     } catch (err) {
       setError(
-        "We are experiencing technical difficulties please contact support!"
+        "We are experiencing technical difficulties. Please contact support."
       );
       console.log(err);
     }
@@ -52,18 +48,18 @@ export default function Login() {
       style={{
         backgroundImage: "url('src/assets/loginbackground.png')",
       }}
-      className="bg-background min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 md:px-16"
+      className=" min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 md:px-16"
     >
-      <h1 className="font-poppins text-center text-3xl sm:text-5xl md:text-6xl font-bold tracking-wide leading-tight bg-gradient-to-r from-amber-600 to-amber-700 text-transparent bg-clip-text mb-6 ">
+      <h1 className="font-poppins text-center text-3xl sm:text-5xl md:text-6xl font-bold tracking-wide leading-tight bg-gradient-to-r from-amber-600 to-amber-700 text-transparent bg-clip-text mb-6">
         Help a Dog Find a Home!
       </h1>
 
-      <form
-        onSubmit={handleLogin}
-        className="relative flex flex-col items-center gap-4 w-full max-w-md"
-      >
-        <div className="flex flex-col w-full gap-4">
-          <div className="flex flex-col w-full">
+      <div className="relative w-full max-w-md flex flex-col items-center">
+        <form
+          onSubmit={handleLogin}
+          className="flex flex-col items-center gap-4 w-full"
+        >
+          <div className="flex flex-col gap-4 w-full">
             <label htmlFor="name">Name</label>
             <input
               id="name"
@@ -73,6 +69,7 @@ export default function Login() {
               className="border p-2 rounded-md bg-amber-200 w-full text-lg"
             />
           </div>
+
           <div className="flex flex-col w-full">
             <label htmlFor="email">Email</label>
             <input
@@ -83,15 +80,14 @@ export default function Login() {
               className="border p-2 rounded-md bg-amber-200 w-full text-lg"
             />
           </div>
-        </div>
 
-        <div className="mt-6 w-full text-center ">
-          <BoneButton text="Log in" />
-        </div>
-      </form>
-      <div className="mt-4">
+          <div className="mt-6">
+            <BoneButton text="Log In" aria-label="Log in to your account" />
+          </div>
+        </form>
+
         {error && (
-          <p className="text-black absolute bottom-8 left-1/2 transform -translate-x-1/2 sm:top-[80%] sm:left-[50%] sm:max-w-full md:top-[80%] md:left-[50%]">
+          <p className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-black text-center w-full">
             {error}
           </p>
         )}

@@ -3,7 +3,7 @@
 .bone {
   margin: 20px;
   position: relative;
-  width: 150px;
+  width: 145px;
   height: 60px;
   cursor: pointer;
   background: transparent;
@@ -15,7 +15,7 @@
 .c3,
 .c4 {
   background: #fff;
-  height: 30px;
+  height: 35px;
   width: 30px;
   border: 1px solid #000;
   border-radius: 50%;
@@ -72,4 +72,19 @@
 
 body {
   font-family: "Poppins", sans-serif;
+}
+
+.background {
+  background-image: url("src/assets/loginbackground.png");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 375px) and (min-height: 667px) {
+  .bone {
+    width: 100px;
+  }
+}
+
+@media (max-width: 667px) and (min-height: 375px) {
 }

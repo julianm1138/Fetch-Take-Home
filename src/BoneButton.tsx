@@ -1,14 +1,20 @@
-import React from "react";
-
+import "./index.css";
 interface BoneButtonProps {
   text: string;
   onClick?: () => void;
+  className?: string;
 }
-export default function BoneButton({ text, onClick }: BoneButtonProps) {
+export default function BoneButton({
+  text,
+  onClick,
+  className,
+}: BoneButtonProps) {
   return (
     <button
       type="submit"
-      className="bone hover:scale-110 transition-all duration-200 ease-in-out"
+      className={`bone hover:scale-80 transition-all duration-200 ease-in-out ${
+        className ?? ""
+      }`}
       onClick={onClick}
     >
       <div className="c1"></div>

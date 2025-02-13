@@ -8,9 +8,7 @@ export default {
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
-      colors: {
-        beige: "#f5f5dc",
-      },
+
       backgroundImage: {
         login: "url('/loginbackground.png')",
       },
