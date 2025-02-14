@@ -48,7 +48,7 @@ export default function Login() {
       style={{
         backgroundImage: "url('src/assets/loginbackground.png')",
       }}
-      className=" min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 md:px-16"
+      className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-8 md:px-16"
     >
       <h1 className="font-poppins text-center text-3xl sm:text-5xl md:text-6xl font-bold tracking-wide leading-tight bg-gradient-to-r from-amber-600 to-amber-700 text-transparent bg-clip-text mb-6">
         Help a Dog Find a Home!

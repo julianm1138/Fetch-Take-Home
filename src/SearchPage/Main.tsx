@@ -1,3 +1,8 @@
+import DogCard from "./DogCard";
 export default function Main({ className }: { className?: string }) {
-  return <h1>this is the main section</h1>;
+  return (
+    <div>
+      <DogCard />
+    </div>
+  );
 }

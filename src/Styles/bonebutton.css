@@ -1,9 +1,7 @@
-@import "tailwindcss";
-
 .bone {
   margin: 20px;
   position: relative;
-  width: 145px;
+  width: 150px;
   height: 60px;
   cursor: pointer;
   background: transparent;
@@ -70,21 +68,26 @@
   color: #000000;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-}
-
 .background {
   background-image: url("src/assets/loginbackground.png");
   background-size: cover;
   background-position: center;
 }
 
-@media (max-width: 375px) and (min-height: 667px) {
+@media (max-height: 800px) and (orientation: portrait) {
   .bone {
+    width: 124px;
+  }
+  .b1 {
     width: 100px;
+  }
+  .b2 {
+    width: 65px;
   }
 }
 
-@media (max-width: 667px) and (min-height: 375px) {
+@media (max-width: 677px) and (orientation: landscape) {
+  .bone {
+    width: 149px;
+  }
 }

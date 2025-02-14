@@ -1,18 +1,20 @@
 import Header from "./Header";
 import Filter from "./Filter";
 import Main from "./Main";
+import "../Styles/index.css";
+import DogCard from "./DogCard";
 
 export default function SearchPage() {
   return (
-    <div className=" grid grid-cols-1 gap-4 p-4 bg-cover bg-center">
+    <div className="overflow-x-hidden min-h-screen">
       <Header />
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="col-span-1 sm:col-span-1">
+      <div className="grid grid-cols-[30%_70%] gap-10">
+        <div className=" p-4">
           <Filter />
         </div>
 
-        <div className="col-span-1 sm:col-span-3">
+        <div className=" p-4">
           <Main />
         </div>
       </div>

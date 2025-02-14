@@ -1,4 +1,5 @@
-import "./index.css";
+import "./Styles/index.css";
+import { useLocation } from "react-router-dom";
 interface BoneButtonProps {
   text: string;
   onClick?: () => void;
@@ -9,11 +10,14 @@ export default function BoneButton({
   onClick,
   className,
 }: BoneButtonProps) {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
+
   return (
     <button
       type="submit"
-      className={`bone hover:scale-80 transition-all duration-200 ease-in-out ${
-        className ?? ""
+      className={`bone hover:scale-80 transition-all duration-200 ease-in-out ${className} ${
+        isLoginPage ? "login-bone" : ""
       }`}
       onClick={onClick}
     >

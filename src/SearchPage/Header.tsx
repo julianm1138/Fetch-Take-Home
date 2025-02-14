@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BoneButton from "../BoneButton";
-import "../index.css";
+import "../Styles/index.css";
+import "../Styles/bonebutton.css";
 
-export default function Header() {
+export default function Header({ className }: { className?: string }) {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -21,8 +22,9 @@ export default function Header() {
 
   return (
     <div>
-      <header className="flex justify-end">
-        <h1>Welcome to Dog Search!</h1>
+      <div className={className}></div>
+      <header className="flex justify-between items-center pl-6">
+        <h1>Dog Search</h1>
         <BoneButton
           text="Log Out"
           onClick={handleLogout}
