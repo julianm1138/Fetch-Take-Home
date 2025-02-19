@@ -7,33 +7,41 @@ interface PaginationProps {
 }
 
 export default function Pagination({
+  //data from the server
   total,
   next,
   prev,
   onPageChange,
 }: PaginationProps) {
   return (
-    <div className="flex justify-between items-center mt-6">
-      <button
-        onClick={() => onPageChange(prev)}
-        disabled={!prev}
-        className={`px-4 py-2 rounded-md ${
-          prev ? "bg-blue-500 text-white cursor-pointer" : "bg-gray-300"
-        }`}
-      >
-        Previous
-      </button>
+    <div className="flex flex-col items-center mt-6">
+      <div className="flex gap-5 mb-4 justify-between">
+        <button
+          onClick={() => onPageChange(prev)}
+          disabled={!prev}
+          className={`px-14 py-3 rounded-md ${
+            prev
+              ? "bg-white text-[#D35400] shadow-md cursor-pointer"
+              : "bg-white text-[#D35400] shadow-md"
+          }`}
+        >
+          Previous
+        </button>
 
-      <p className="text-gray-600">Total Results: {total}</p>
-      <button
-        onClick={() => onPageChange(next)}
-        disabled={!next}
-        className={`px-4 py-2 rounded-md ${
-          next ? "bg-blue-500 text-white cursor-pointer" : "bg-gray-300"
-        }`}
-      >
-        Next
-      </button>
+        <button
+          onClick={() => onPageChange(next)}
+          disabled={!next}
+          className={`px-14 py-3 rounded-md ${
+            next
+              ? " bg-white text-[#D35400] shadow-md cursor-pointer"
+              : "bg-white text-[#D35400] shadow-md"
+          }`}
+        >
+          Next
+        </button>
+      </div>
+
+      <p className=" text-[#D35400]">Total Results: {total}</p>
     </div>
   );
 }

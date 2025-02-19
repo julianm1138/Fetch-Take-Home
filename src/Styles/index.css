@@ -10,3 +10,22 @@ body {
 body {
   font-family: "Poppins", sans-serif;
 }
+
+/* index.css */
+.dog-card {
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+}
+
+.dog-card:before {
+  content: "";
+  display: block;
+  height: 18px;
+  border-radius: 50% 50% 0 0;
+  position: absolute; /* Absolute positioning inside .dog-card */
+  bottom: -9px; /* Moves the pseudo-element 9px below the .dog-card */
+  left: 0px; /* Spans outside the left edge of the card */
+  right: 0px; /* Spans outside the right edge of the card */
+  background-color: #fff;
+}

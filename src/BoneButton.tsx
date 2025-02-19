@@ -16,7 +16,7 @@ export default function BoneButton({
   return (
     <button
       type="submit"
-      className={`bone hover:scale-80 transition-all duration-200 ease-in-out ${className} ${
+      className={`bone flex justify-center items-center hover:scale-80 transition-all duration-200 ease-in-out ${className} ${
         isLoginPage ? "login-bone" : ""
       }`}
       onClick={onClick}

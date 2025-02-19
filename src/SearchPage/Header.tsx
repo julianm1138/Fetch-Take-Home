@@ -23,12 +23,11 @@ export default function Header({ className }: { className?: string }) {
   return (
     <div>
       <div className={className}></div>
-      <header className="flex justify-between items-center pl-6">
-        <h1>Dog Search</h1>
+      <header className="flex justify-end pl-6">
         <BoneButton
           text="Log Out"
           onClick={handleLogout}
-          className="scale-70"
+          className="scale-65"
           aria-label="Log out of your account"
         />
       </header>
