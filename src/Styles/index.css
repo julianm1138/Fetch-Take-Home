@@ -12,20 +12,20 @@ body {
 }
 
 /* index.css */
-.dog-card {
+.bottom-round {
   box-sizing: border-box;
   position: relative;
   text-align: center;
 }
 
-.dog-card:before {
+.bottom-round:before {
   content: "";
   display: block;
   height: 18px;
   border-radius: 50% 50% 0 0;
-  position: absolute; /* Absolute positioning inside .dog-card */
-  bottom: -9px; /* Moves the pseudo-element 9px below the .dog-card */
-  left: 0px; /* Spans outside the left edge of the card */
-  right: 0px; /* Spans outside the right edge of the card */
+  position: absolute;
+  bottom: -9px;
+  left: 0px;
+  right: 0px;
   background-color: #fff;
 }

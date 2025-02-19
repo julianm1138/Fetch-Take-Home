@@ -76,7 +76,7 @@ export default function Main({ filters }: { filters: Filters }) {
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="grid grid-cols-2 w-full justify-center ml-3 mr-14 sm:grid-cols-2 sm:ml-9 lg:grid-cols-3 gap-14 sm:gap-12 px-4 sm:px-10">
+      <div className="grid grid-cols-2 w-full justify-center ml-4 mr-15 sm:grid-cols-2 sm:ml-8 sm:mr-25 lg:grid-cols-3 gap-13 sm:gap-19 px-4 sm:px-10">
         {dogs.map((dog) => (
           <DogCard key={dog.id} dog={dog} />
         ))}

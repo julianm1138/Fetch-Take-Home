@@ -18,30 +18,33 @@ export default function DogCard({ dog }: { dog: Dog }) {
   };
 
   return (
-    <div className="bg-white text-[#d77f3b] shadow-md max-h-100 rounded-lg w-44 sm:w-75">
+    <div className="bg-white text-[#d77f3b] shadow-md rounded-lg pb-5 w-44 sm:w-78">
       <div className="flex flex-col items-center">
-        <div className="dog-card">
+        <div className="bottom-round">
+          <button
+            onClick={toggleFavorite}
+            className={`flex justify-end cursor-pointer transition-colors duration-300 ${
+              isFavorited ? "text-red-500" : "text-[#D35400]"
+            }`}
+          >
+            <div className="absolute top-2 right-2 flex justify-center items-center w-15 h-15 rounded-full bg-white opacity-60">
+              <FaHeart className=" z-30  " size={29} />
+            </div>
+          </button>
+
           <img
-            className="w-full h-66 sm:h-52 sm:w-76 lg:h-56 object-cover circle-border"
+            className=" rounded-lg h-70 mr-9 object-cover sm:h-90 sm:w-78 lg:h-56"
             src={dog.img}
             alt={dog.name}
           />
         </div>
 
-        <h3 className="text-lg text-[#D35400] font-bold mt-2">{dog.name}</h3>
-        <p className=" w-40 text-center text-[#D35400] truncate sm:w-60 ">
+        <h3 className="text-lg  text-[#D35400] font-bold mt-2">{dog.name}</h3>
+        <p className="  w-40 text-center text-[#C02C2C] text-sm *:truncate sm:w-52 ">
           {dog.breed}
         </p>
-        <p className=" text-[#D35400] ">{dog.age} years old</p>
-
-        <button
-          onClick={toggleFavorite}
-          className={`flex justify-end w-8 h-8 mt-2 cursor-pointer transition-colors duration-300 ${
-            isFavorited ? "text-red-500" : "text-gray-400"
-          }`}
-        >
-          <FaHeart size={20} />
-        </button>
+        <p className=" text-[#C02C2C] text-sm">{dog.age} years old</p>
+        <p className=" text-[#C02C2C] text-sm">{dog.zip_code}</p>
       </div>
     </div>
   );

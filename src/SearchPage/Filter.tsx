@@ -56,8 +56,9 @@ export default function Filter({ onFilterChange }: FilterProps) {
       breeds: filters.selectedBreed ? [filters.selectedBreed] : [],
       sort: filters.sort ? `breed:${filters.sort}` : null,
       ageRange: { min: filters.ageMin, max: filters.ageMax },
-      zipcode: filters.zipcode, // Add zipcode filter here
+      zipcode: filters.zipcode,
     });
+    toggleOverlay();
   };
 
   const resetFilters = () => {
