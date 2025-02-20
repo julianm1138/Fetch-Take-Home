@@ -23,7 +23,6 @@ interface FilterProps {
 export default function Filter({ onFilterChange }: FilterProps) {
   const [breeds, setBreeds] = useState<string[]>([]);
 
-  // Consolidated state for filters
   const [filters, setFilters] = useState<FilterState>({
     selectedBreed: "",
     ageMin: null,
@@ -42,7 +41,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
         withCredentials: true,
       })
       .then((res) => {
-        setBreeds(res.data); // Populate breeds list from the API
+        setBreeds(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -52,6 +51,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
       console.error("function not provided");
       return;
     }
+
     onFilterChange({
       breeds: filters.selectedBreed ? [filters.selectedBreed] : [],
       sort: filters.sort ? `breed:${filters.sort}` : null,

@@ -12,16 +12,16 @@ interface Dog {
   breed: string;
 }
 
-interface Filters {
+interface DogSearchParams {
   breeds?: string[];
-  zipcodes?: string[];
+  zipcode?: string[];
   ageMin?: number;
   ageMax?: number;
-  size?: number;
-  from?: string;
   sort?: string;
+  from?: string;
 }
-export default function Main({ filters }: { filters: Filters }) {
+
+export default function Main({ filters }: { filters: DogSearchParams }) {
   const [dogs, setDogs] = useState<Dog[]>([]);
   const [pagination, setPagination] = useState({
     total: 0,
@@ -30,22 +30,40 @@ export default function Main({ filters }: { filters: Filters }) {
   });
 
   useEffect(() => {
+    if (!filters) return;
+
+    const params: DogSearchParams = {};
+
+    if (filters.breeds && filters.breeds.length > 0)
+      params.breeds = filters.breeds;
+
+    if (filters.zipcode) {
+      params.zipcode = filters.zipcode;
+    }
+
+    if (filters.ageMin !== null) params.ageMin = filters.ageMin;
+
+    if (filters.ageMax !== null) params.ageMax = filters.ageMax;
+
+    if (filters.sort) params.sort = `${filters.sort}`;
+
+    console.log("Filters", filters);
+
     axios
       .get("https://frontend-take-home-service.fetch.com/dogs/search", {
-        params: filters,
+        params,
         withCredentials: true,
       })
       .then(async (res) => {
         const dogIds: string[] = res.data.resultIds;
 
-        // Fetch full details of each dog
         const dogDetailsRes = await axios.post(
           "https://frontend-take-home-service.fetch.com/dogs",
           dogIds,
           { withCredentials: true }
         );
-
-        setDogs(dogDetailsRes.data); // Now this contains full dog objects
+        console.log("server data:", dogDetailsRes.data);
+        setDogs(dogDetailsRes.data);
 
         setPagination({
           total: res.data.total,
@@ -58,18 +76,30 @@ export default function Main({ filters }: { filters: Filters }) {
 
   const handlePageChange = (cursor: string | null) => {
     if (!cursor) return;
+
+    const decodedUrl = decodeURIComponent(cursor);
+
     axios
-      .get(`https://frontend-take-home-service.fetch.com/dogs/search`, {
+      .get(`https://frontend-take-home-service.fetch.com${decodedUrl}`, {
         withCredentials: true,
       })
 
-      .then((res) => {
-        setDogs(res.data.resultIds);
+      .then(async (res) => {
+        const dogIds: string[] = res.data.resultIds;
+
+        const dogDetailRes = await axios.post(
+          "https://frontend-take-home-service.fetch.com/dogs",
+          dogIds,
+          { withCredentials: true }
+        );
+
+        setDogs(dogDetailRes.data);
         setPagination({
           total: res.data.total,
           next: res.data.next,
           prev: res.data.prev,
         });
+        window.scrollTo(0, 0);
       })
       .catch((err) => console.log(err));
   };
@@ -82,7 +112,12 @@ export default function Main({ filters }: { filters: Filters }) {
         ))}
       </div>
       <div>
-        <Pagination {...pagination} onPageChange={handlePageChange} />
+        <Pagination
+          total={pagination.total}
+          next={pagination.next}
+          prev={pagination.prev}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );
