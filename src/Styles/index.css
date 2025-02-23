@@ -24,8 +24,48 @@ body {
   height: 18px;
   border-radius: 50% 50% 0 0;
   position: absolute;
-  bottom: -9px;
+  bottom: calc(100% - 224px);
   left: 0px;
   right: 0px;
   background-color: #fff;
+}
+
+@media (max-height: 800px) and (orientation: portrait) {
+  .bottom-round {
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+  }
+
+  .bottom-round:before {
+    content: "";
+    display: block;
+    height: 18px;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: calc(100% - 282px);
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+  }
+}
+
+@media (max-width: 677px) and (orientation: landscape) {
+  .bottom-round {
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+  }
+
+  .bottom-round:before {
+    content: "";
+    display: block;
+    height: 18px;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: calc(100% - 360px);
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+  }
 }

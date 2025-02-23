@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import BoneButton from "./BoneButton";
+import apiService from "./services/apiService";
 
 export default function Login() {
   const [name, setName] = useState<string>("");
@@ -23,21 +24,13 @@ export default function Login() {
       return;
     }
     setError("");
-    try {
-      const response = await axios.post(
-        "https://frontend-take-home-service.fetch.com/auth/login",
-        { name, email },
-        { withCredentials: true }
-      );
 
-      if (response.status === 200) {
-        navigate("/search");
-      } else {
-        setError("Sorry, that did not work. Please try again.");
-      }
-    } catch (err) {
-      setError("Please enter a valid email.");
-      console.log(err);
+    const success = await apiService.login(name, email);
+
+    if (success) {
+      navigate("/search");
+    } else {
+      setError("Sorry, that did not work. Please try again.");
     }
   };
 

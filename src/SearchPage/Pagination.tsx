@@ -21,7 +21,7 @@ export default function Pagination({
           disabled={!prev}
           className={`px-14 py-3 rounded-md ${
             prev
-              ? "bg-white text-[#D35400] shadow-md cursor-pointer"
+              ? "bg-white text-[#D35400] hover:bg-[#D35400] hover:text-white shadow-md cursor-pointer"
               : "bg-white text-[#D35400] shadow-md"
           }`}
         >
@@ -31,9 +31,9 @@ export default function Pagination({
         <button
           onClick={() => onPageChange(next)}
           disabled={!next}
-          className={`px-14 py-3 rounded-md ${
+          className={`px-14 py-3 rounded-md  ${
             next
-              ? " bg-white text-[#D35400] shadow-md cursor-pointer"
+              ? " bg-white text-[#D35400] hover:bg-[#D35400] hover:text-white shadow-md cursor-pointer"
               : "bg-white text-[#D35400] shadow-md"
           }`}
         >

@@ -1,124 +1,98 @@
 import { useEffect, useState } from "react";
 import DogCard from "./DogCard";
 import Pagination from "./Pagination";
-import axios from "axios";
-
-interface Dog {
-  id: string;
-  img: string;
-  name: string;
-  age: number;
-  zip_code: string;
-  breed: string;
-}
-
-interface DogSearchParams {
-  breeds?: string[];
-  zipcode?: string[];
-  ageMin?: number;
-  ageMax?: number;
-  sort?: string;
-  from?: string;
-}
+// import axios from "axios";
+import { Dog, DogSearchParams } from "../interfaces";
+import apiService from "../services/apiService";
 
 export default function Main({ filters }: { filters: DogSearchParams }) {
   const [dogs, setDogs] = useState<Dog[]>([]);
-  const [pagination, setPagination] = useState({
+  const [pagination, setPagination] = useState<{
+    total: number;
+    next: string | null;
+    prev: string | null;
+  }>({
     total: 0,
     next: null,
     prev: null,
   });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (!filters) return;
 
-    const params: DogSearchParams = {};
+    const fetchDogs = async () => {
+      setIsLoading(true);
 
-    if (filters.breeds && filters.breeds.length > 0)
-      params.breeds = filters.breeds;
-
-    if (filters.zipcode) {
-      params.zipcode = filters.zipcode;
-    }
-
-    if (filters.ageMin !== null) params.ageMin = filters.ageMin;
-
-    if (filters.ageMax !== null) params.ageMax = filters.ageMax;
-
-    if (filters.sort) params.sort = `${filters.sort}`;
-
-    console.log("Filters", filters);
-
-    axios
-      .get("https://frontend-take-home-service.fetch.com/dogs/search", {
-        params,
-        withCredentials: true,
-      })
-      .then(async (res) => {
-        const dogIds: string[] = res.data.resultIds;
-
-        const dogDetailsRes = await axios.post(
-          "https://frontend-take-home-service.fetch.com/dogs",
-          dogIds,
-          { withCredentials: true }
-        );
-        console.log("server data:", dogDetailsRes.data);
-        setDogs(dogDetailsRes.data);
+      try {
+        const searchResponse = await apiService.searchDogs(filters);
+        const dogIds = searchResponse.resultIds;
+        const dogDetails = await apiService.fetchDogDetails(dogIds);
+        setDogs(dogDetails);
 
         setPagination({
-          total: res.data.total,
-          next: res.data.next,
-          prev: res.data.prev,
+          total: searchResponse.total,
+          next: searchResponse.next,
+          prev: searchResponse.prev,
         });
-      })
-      .catch((err) => console.log(err));
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchDogs();
   }, [filters]);
 
-  const handlePageChange = (cursor: string | null) => {
+  const handlePageChange = async (cursor: string | null) => {
     if (!cursor) return;
 
-    const decodedUrl = decodeURIComponent(cursor);
+    setIsLoading(true);
+    try {
+      const searchResponse = await apiService.fetchDogsByCursor(cursor);
+      const dogIds = searchResponse.resultIds;
 
-    axios
-      .get(`https://frontend-take-home-service.fetch.com${decodedUrl}`, {
-        withCredentials: true,
-      })
+      const dogDetails = await apiService.fetchDogDetails(dogIds);
+      setDogs(dogDetails);
 
-      .then(async (res) => {
-        const dogIds: string[] = res.data.resultIds;
+      setPagination({
+        total: searchResponse.total,
+        next: searchResponse.next,
+        prev: searchResponse.prev,
+      });
 
-        const dogDetailRes = await axios.post(
-          "https://frontend-take-home-service.fetch.com/dogs",
-          dogIds,
-          { withCredentials: true }
-        );
-
-        setDogs(dogDetailRes.data);
-        setPagination({
-          total: res.data.total,
-          next: res.data.next,
-          prev: res.data.prev,
-        });
-        window.scrollTo(0, 0);
-      })
-      .catch((err) => console.log(err));
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.error("Error fetching dogs by cursor:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="grid grid-cols-2 w-full justify-center ml-4 mr-15 sm:grid-cols-2 sm:ml-8 sm:mr-25 lg:grid-cols-3 gap-13 sm:gap-19 px-4 sm:px-10">
-        {dogs.map((dog) => (
-          <DogCard key={dog.id} dog={dog} />
-        ))}
-      </div>
-      <div>
-        <Pagination
-          total={pagination.total}
-          next={pagination.next}
-          prev={pagination.prev}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      {isLoading ? (
+        <p className="text-[#D35400] animate-bounce duration-[1s] font-light text-4xl">
+          Loading...
+        </p>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 w-full justify-center ml-4 mr-15 gap-13 sm:grid-cols-2 sm:ml-8 sm:mr-25 sm:gap-19 px-4 sm:px-10 lg:grid-cols-4 lg:gap-4 lg:ml-50">
+            {dogs.map((dog) => (
+              <DogCard key={dog.id} dog={dog} />
+            ))}
+          </div>
+
+          <div className="mt-15 mb-10">
+            <Pagination
+              total={pagination.total}
+              next={pagination.next}
+              prev={pagination.prev}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
