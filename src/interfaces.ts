@@ -53,3 +53,33 @@ export interface DogCardProps {
   onToggleFavorite: (dogId: string) => void;
   showButton?: boolean;
 }
+
+export interface Coordinates {
+  lat: number;
+  long: number;
+}
+
+export interface Location {
+  city: string;
+  state: string;
+  zip_code: string;
+}
+
+export interface GeoBoundingBox {
+  top?: Coordinates;
+  bottom?: Coordinates;
+  left?: Coordinates;
+  right?: Coordinates;
+  bottom_left?: Coordinates;
+  bottom_right?: Coordinates;
+  top_left?: Coordinates;
+  top_right?: Coordinates;
+}
+
+export interface SearchLocationParams {
+  city?: string;
+  states?: string[];
+  geoBoundingBox?: GeoBoundingBox;
+  size?: number;
+  from?: number;
+}

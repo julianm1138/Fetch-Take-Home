@@ -3,6 +3,7 @@ import Overlay from "./Overlay";
 import { MdFilterList } from "react-icons/md";
 import apiService from "../services/apiService";
 import { FilterState, FilterProps } from "../interfaces";
+import Autocomplete from "../Components/Autocomplete";
 
 export default function Filter({ onFilterChange }: FilterProps) {
   const [breeds, setBreeds] = useState<string[]>([]);
@@ -98,17 +99,9 @@ export default function Filter({ onFilterChange }: FilterProps) {
           </select>
 
           <label className="flex justify-center text-[#D35400] font-semibold mb-2">
-            Zip Code
+            Location
           </label>
-          <input
-            id="zipcode"
-            type="text"
-            className="border p-3 rounded-md bg-white w-full text-lg sm:h-10"
-            value={filters.zipcode}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, zipcode: e.target.value }))
-            }
-          />
+          <Autocomplete />
 
           <label className="flex justify-center text-[#D35400] font-semibold mb-2">
             Age Range

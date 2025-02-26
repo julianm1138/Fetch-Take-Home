@@ -78,7 +78,12 @@ export default function Main({ filters }: { filters: DogSearchParams }) {
         <>
           <div className="grid grid-cols-2 w-full justify-center ml-4 mr-15 gap-13 sm:grid-cols-2 sm:ml-8 sm:mr-25 sm:gap-19 px-4 sm:px-10 lg:grid-cols-4 lg:gap-4 lg:ml-50">
             {dogs.map((dog) => (
-              <DogCard key={dog.id} dog={dog} />
+              <DogCard
+                key={dog.id}
+                dog={dog}
+                isFavorited={false}
+                onToggleFavorite={() => ""}
+              />
             ))}
           </div>
 

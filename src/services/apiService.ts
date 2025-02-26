@@ -1,5 +1,11 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { DogSearchParams, Dog, DogSearchResponse } from "../interfaces";
+import {
+  DogSearchParams,
+  Dog,
+  DogSearchResponse,
+  SearchLocationParams,
+  Location,
+} from "../interfaces";
 
 class ApiService {
   private axiosInstance: AxiosInstance;
@@ -84,6 +90,19 @@ class ApiService {
     } catch (error) {
       console.log(error);
       return null;
+    }
+  }
+
+  public async searchLocation(
+    params: SearchLocationParams
+  ): Promise<Location[]> {
+    try {
+      const response: AxiosResponse<{ results: Location[] }> =
+        await this.axiosInstance.post("locations/search", params);
+      return response.data.results;
+    } catch (error: unknown) {
+      this.handleError(error);
+      return [];
     }
   }
 
