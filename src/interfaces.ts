@@ -46,3 +46,10 @@ export interface OverlayProps {
   onClose: () => void;
   children: React.ReactNode;
 }
+
+export interface DogCardProps {
+  dog: Dog;
+  isFavorited: boolean;
+  onToggleFavorite: (dogId: string) => void;
+  showButton?: boolean;
+}

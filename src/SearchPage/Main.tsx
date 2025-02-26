@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import DogCard from "./DogCard";
 import Pagination from "./Pagination";
-// import axios from "axios";
 import { Dog, DogSearchParams } from "../interfaces";
 import apiService from "../services/apiService";
 

@@ -1,4 +1,4 @@
-import "./Styles/index.css";
+import "../Styles/index.css";
 import { useLocation } from "react-router-dom";
 interface BoneButtonProps {
   text: string;

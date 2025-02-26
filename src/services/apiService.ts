@@ -72,9 +72,26 @@ class ApiService {
     }
   }
 
+  public async fetchMatch(favorites: string[]): Promise<Dog | null> {
+    try {
+      const response: AxiosResponse<{ match: string }> =
+        await this.axiosInstance.post("dogs/match", favorites);
+
+      const matchedDogId = response.data.match;
+
+      const dogDetails = await this.fetchDogDetails([matchedDogId]);
+      return dogDetails[0];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
   public handleError(error: unknown): void {
     if (axios.isAxiosError(error)) {
       console.error("Axios error:", error);
+    } else {
+      console.log(error);
     }
   }
 }

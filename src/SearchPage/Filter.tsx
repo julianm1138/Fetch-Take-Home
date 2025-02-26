@@ -70,10 +70,10 @@ export default function Filter({ onFilterChange }: FilterProps) {
   };
 
   return (
-    <div className="relative flex justify-center ">
+    <div className="relative flex justify-center  ">
       <button
         onClick={toggleOverlay}
-        className="flex justify-center items-center gap-3 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden cursor-pointer"
+        className="flex justify-center items-center gap-3 mt-35 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden cursor-pointer"
       >
         <MdFilterList size={24} /> Filters
       </button>
@@ -142,16 +142,16 @@ export default function Filter({ onFilterChange }: FilterProps) {
 
           <div className="flex gap-2 h-12 mb-2">
             <button
-              className="flex-1 flex items-center justify-center bg-white text-[#D35400] py-2 rounded-md tex-center text-sm shadow-md cursor-pointer"
+              className="flex-1 flex items-center justify-center bg-white text-[#D35400] py-2 rounded-md tex-center text-[16px] shadow-md cursor-pointer"
               onClick={() => setFilters((prev) => ({ ...prev, sort: "asc" }))}
             >
-              Sort A → Z
+              Sort Breed A → Z
             </button>
             <button
-              className="flex-1 flex items-center justify-center bg-white text-[#D35400] py-2 rounded-md text-sm shadow-md cursor-pointer"
+              className="flex-1 flex items-center justify-center bg-white text-[#D35400] py-2 rounded-md text-[16px] shadow-md cursor-pointer"
               onClick={() => setFilters((prev) => ({ ...prev, sort: "desc" }))}
             >
-              Sort Z → A
+              Sort Breed Z → A
             </button>
           </div>
 

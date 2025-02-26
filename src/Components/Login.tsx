@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
 import BoneButton from "./BoneButton";
-import apiService from "./services/apiService";
+import apiService from "../services/apiService";
 
 export default function Login() {
   const [name, setName] = useState<string>("");
