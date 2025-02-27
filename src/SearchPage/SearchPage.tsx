@@ -38,7 +38,7 @@ export default function SearchPage() {
       <Header />
 
       <div className="grid lg:grid-cols-[20%_67%] lg:pb-1">
-        <div className="lg:block p-3 -mt-30 ml-15 h-[37rem] w-full overflow-x-hidden overflow-y-hidden">
+        <div className="lg:block p-3 -mt-30 ml-15 w-full overflow-x-hidden overflow-y-hidden">
           <Filter onFilterChange={handleFilterChange} />
         </div>
 

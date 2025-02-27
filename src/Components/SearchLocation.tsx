@@ -3,7 +3,11 @@
 import Autocomplete from "react-google-autocomplete";
 import apiService from "../services/apiService";
 
-const SearchLocation: React.FC = () => {
+interface SearchLocationProps {
+  onZipcodeSelect: (zipcode: string) => void;
+}
+
+const SearchLocation: React.FC<SearchLocationProps> = ({ onZipcodeSelect }) => {
   const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
 
   const handlePlaceSelected = async (place: google.maps.places.PlaceResult) => {
@@ -31,6 +35,12 @@ const SearchLocation: React.FC = () => {
       states: state ? [state] : undefined,
       postalCode: postalCode || undefined,
     };
+
+    if (postalCode) {
+      onZipcodeSelect(postalCode);
+    } else {
+      console.error("No postal code found in the selected place");
+    }
 
     try {
       const results = await apiService.searchLocation(params);
