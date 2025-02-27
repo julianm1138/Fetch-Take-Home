@@ -3,7 +3,7 @@ import Overlay from "./Overlay";
 import { MdFilterList } from "react-icons/md";
 import apiService from "../services/apiService";
 import { FilterState, FilterProps } from "../interfaces";
-import Autocomplete from "../Components/Autocomplete";
+import SearchLocation from "../Components/SearchLocation";
 
 export default function Filter({ onFilterChange }: FilterProps) {
   const [breeds, setBreeds] = useState<string[]>([]);
@@ -101,7 +101,8 @@ export default function Filter({ onFilterChange }: FilterProps) {
           <label className="flex justify-center text-[#D35400] font-semibold mb-2">
             Location
           </label>
-          <Autocomplete />
+
+          <SearchLocation />
 
           <label className="flex justify-center text-[#D35400] font-semibold mb-2">
             Age Range

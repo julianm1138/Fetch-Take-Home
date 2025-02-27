@@ -81,8 +81,8 @@ export default function Main({ filters }: { filters: DogSearchParams }) {
               <DogCard
                 key={dog.id}
                 dog={dog}
-                isFavorited={false}
-                onToggleFavorite={() => ""}
+                isFavorited={true}
+                onToggleFavorite={() => null}
               />
             ))}
           </div>
