@@ -71,10 +71,10 @@ export default function Filter({ onFilterChange }: FilterProps) {
   };
 
   return (
-    <div className="relative flex justify-center h-[37rem]">
+    <div className="relative flex justify-center h-[39rem] -mt-12 lg:mt-5 lg:overflow-y-none ">
       <button
         onClick={toggleOverlay}
-        className="flex justify-center h-12 items-center gap-3 mt-35 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
+        className="flex justify-center h-12 items-center gap-3 mt-48 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
       >
         <MdFilterList size={24} /> Filters
       </button>
@@ -108,34 +108,36 @@ export default function Filter({ onFilterChange }: FilterProps) {
             }
           />
 
-          <label className="flex justify-center text-[#D35400] font-semibold mb-2">
+          <label className="flex justify-center text-[#D35400] font-semibold mb-3">
             Age Range
           </label>
-          <div className="flex gap-2">
-            <input
-              type="number"
-              value={filters.ageMin || ""}
-              onChange={(e) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  ageMin: Number(e.target.value),
-                }))
-              }
-              placeholder="Min Age"
-              className="w-24 p-2 border rounded-md"
-            />
-            <input
-              type="number"
-              value={filters.ageMax || ""}
-              onChange={(e) =>
-                setFilters((prev) => ({
-                  ...prev,
-                  ageMax: Number(e.target.value),
-                }))
-              }
-              placeholder="Max Age"
-              className="w-24 p-2 border rounded-md "
-            />
+          <div className="flex justify-center lg:flex  lg: mb-4">
+            <div className="flex gap-2">
+              <input
+                type="number"
+                value={filters.ageMin || ""}
+                onChange={(e) =>
+                  setFilters((prev) => ({
+                    ...prev,
+                    ageMin: Number(e.target.value),
+                  }))
+                }
+                placeholder="Min Age"
+                className="w-24 p-2 border rounded-md"
+              />
+              <input
+                type="number"
+                value={filters.ageMax || ""}
+                onChange={(e) =>
+                  setFilters((prev) => ({
+                    ...prev,
+                    ageMax: Number(e.target.value),
+                  }))
+                }
+                placeholder="Max Age"
+                className="w-24 p-2 border rounded-md "
+              />
+            </div>
           </div>
 
           <div className="flex gap-2 h-12 mb-2">

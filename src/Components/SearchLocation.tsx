@@ -42,6 +42,14 @@ const SearchLocation: React.FC<SearchLocationProps> = ({ onZipcodeSelect }) => {
       console.error("No postal code found in the selected place");
     }
 
+    if (postalCodeComponent) {
+      const postalCode = postalCodeComponent.long_name;
+      onZipcodeSelect(postalCode);
+      console.error(null);
+    } else {
+      console.error("No address information");
+    }
+
     try {
       const results = await apiService.searchLocation(params);
       console.log("Search results:", results);
@@ -56,10 +64,11 @@ const SearchLocation: React.FC<SearchLocationProps> = ({ onZipcodeSelect }) => {
       onPlaceSelected={handlePlaceSelected}
       options={{
         types: ["(regions)"],
+        componentRestrictions: { country: "us" },
         fields: ["address_components", "geometry.location"],
       }}
-      placeholder="Enter city or ZIP code"
-      className="text-[#D35400] text-md bg-white px-3 rounded-md shadow-md h-14 mb-6"
+      placeholder="Enter city, state, or ZIP"
+      className="text-[#D35400] text-md bg-white px-3 rounded-md shadow-md w-full h-14 mb-6"
     />
   );
 };

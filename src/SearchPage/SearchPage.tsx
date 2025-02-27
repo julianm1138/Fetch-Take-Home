@@ -42,7 +42,7 @@ export default function SearchPage() {
           <Filter onFilterChange={handleFilterChange} />
         </div>
 
-        <div className=" p-3 lg:w-full -mt-90">
+        <div className=" p-3 -mt-90 lg:w-full lg:mt-5  ">
           <Main filters={filters} />
         </div>
       </div>
