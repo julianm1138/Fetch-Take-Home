@@ -74,7 +74,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
     <div className="relative flex justify-center h-[37rem]">
       <button
         onClick={toggleOverlay}
-        className="flex justify-center items-center gap-3 mt-35 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden cursor-pointer"
+        className="flex justify-center h-12 items-center gap-3 mt-35 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
       >
         <MdFilterList size={24} /> Filters
       </button>
