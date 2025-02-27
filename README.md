@@ -1,50 +1,21 @@
-# React + TypeScript + Vite
+This is a frontend app built with the specifications and API provided by the Fetch FE Take-Home exercise. The tech stack is React, Tailwind, and TypeScript. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- The app features a fully responsive UI made up of a login page, a search page, and a favorites page where navigation is handled by React Router. React Context API is used to handle global state to pass favorted dogs to multiple components as needed.
 
-Currently, two official plugins are available:
+- Login Page handles calls to the login endpoint and navigates the user to Search Page upon successful endpoint access.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search Page handles rendering all the child components including: Header, Pagination (footer), Main, and Filter, which are made up of smaller components such as DogCards.
 
-## Expanding the ESLint configuration
+- The favorites page uses the favorited dogs global state and handles calls to the match endpoint to generate a match for the user.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Most of the server calls are handled in the Main.tsx and Filter.tsx components.
 
-- Configure the top-level `parserOptions` property like this:
+- Most of the server call methods are abstracted into a singleton class for use across the app to improve reusability, modularity, and promote a cleaner codebase. 
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Google Places API was implemented for autocomplete in the filter section.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To do: 
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Implement Age Range filter functionality with a slider for the UI.
+- Populate cards with data from the Location filter input.  
