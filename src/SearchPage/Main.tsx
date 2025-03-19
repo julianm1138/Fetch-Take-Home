@@ -69,14 +69,14 @@ export default function Main({ filters }: { filters: DogSearchParams }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full">
+    <div className="">
       {isLoading ? (
         <p className="text-[#D35400] animate-bounce duration-[1s] font-light text-4xl">
           Loading...
         </p>
       ) : (
         <>
-          <div className="grid grid-cols-2 w-full justify-center ml-4 mr-15 gap-13 sm:grid-cols-2 sm:ml-8 sm:mr-25 sm:gap-19 px-4 sm:px-10 lg:grid-cols-4 lg:gap-4 lg:ml-50">
+          <div className="grid grid-cols-2 w-full justify-center items-center gap-2 px-2 sm:grid-cols-2 sm:gap-7 sm:px-2 lg:grid-cols-4 ">
             {dogs.map((dog) => (
               <DogCard
                 key={dog.id}

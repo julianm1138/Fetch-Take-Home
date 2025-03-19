@@ -30,6 +30,8 @@ export interface FilterState {
   ageMax: number | null;
   sort: string;
   zipcode: string;
+  city: string;
+  state: string;
 }
 
 export interface FilterProps {

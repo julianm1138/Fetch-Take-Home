@@ -38,11 +38,11 @@ export default function SearchPage() {
       <Header />
 
       <div className="grid lg:grid-cols-[20%_67%] lg:pb-1">
-        <div className="lg:block p-3 -mt-30 ml-2 w-full overflow-x-hidden overflow-y-hidden">
+        <div className="lg:block p-3 -mt-30 w-[100%] overflow-x-hidden overflow-y-hidden">
           <Filter onFilterChange={handleFilterChange} />
         </div>
 
-        <div className=" p-3 -mt-90 lg:w-full lg:mt-5  ">
+        <div className="-mt-90 lg:w-full lg:mt-5  ">
           <Main filters={filters} />
         </div>
       </div>

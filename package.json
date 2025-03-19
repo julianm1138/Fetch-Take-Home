@@ -13,6 +13,7 @@
     "@react-google-maps/api": "^2.20.6",
     "@tailwindcss/cli": "^4.0.6",
     "@tailwindcss/vite": "^4.0.6",
+    "@types/react-places-autocomplete": "^7.2.14",
     "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

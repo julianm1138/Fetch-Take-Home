@@ -24,7 +24,7 @@ export default function DogCard({ dog, showButton = true }: DogCardProps) {
   };
 
   return (
-    <div className="bg-white text-[#d77f3b] shadow-md rounded-lg pb-5 w-44 -mb-10 sm:-mb-16 sm:w-78 lg:-mb-2 lg:w-55">
+    <div className="bg-white text-[#d77f3b] shadow-md rounded-lg w-44 mb-2 sm:-mb-4 sm:w-78 lg:-mb-2 lg:w-55">
       <div className="flex flex-col items-center">
         <div className="bottom-round">
           {showButton && (

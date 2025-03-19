@@ -14,6 +14,8 @@ export default function Filter({ onFilterChange }: FilterProps) {
     ageMax: null,
     sort: "",
     zipcode: "",
+    city: "",
+    state: "",
   });
 
   const [isOverlayOpen, setIsOverlayOpen] = useState<boolean>(false);
@@ -44,7 +46,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
     fetchBreeds();
   }, []);
 
-  const applyFilters = () => {
+  const applyFilters = async () => {
     if (!onFilterChange) {
       console.error("function not provided");
       return;
@@ -67,6 +69,8 @@ export default function Filter({ onFilterChange }: FilterProps) {
       ageMax: null,
       sort: "",
       zipcode: "",
+      city: "",
+      state: "",
     });
   };
 
@@ -102,11 +106,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
             Location
           </label>
 
-          <SearchLocation
-            onZipcodeSelect={(zipcode) =>
-              setFilters((prev) => ({ ...prev, zipcode }))
-            }
-          />
+          <SearchLocation />
 
           <label className="flex justify-center text-[#D35400] font-semibold mb-3">
             Age Range

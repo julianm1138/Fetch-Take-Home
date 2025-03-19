@@ -50,6 +50,46 @@ body {
   }
 }
 
+@media (min-height: 430px) and (orientation: portrait) {
+  .bottom-round {
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+  }
+
+  .bottom-round:before {
+    content: "";
+    display: block;
+    height: 0px;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: calc(100% - 282px);
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+  }
+}
+
+@media (max-width: 932px) and (orientation: landscape) {
+  .bottom-round {
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+  }
+
+  .bottom-round:before {
+    content: "";
+    display: block;
+    height: 0px;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: calc(100% - 360px);
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+  }
+}
+
 @media (max-width: 677px) and (orientation: landscape) {
   .bottom-round {
     box-sizing: border-box;

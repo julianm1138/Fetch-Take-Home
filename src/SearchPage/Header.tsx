@@ -23,7 +23,7 @@ export default function Header({ className }: { className?: string }) {
   return (
     <div>
       <div className={className}></div>
-      <header className=" flex justify-between pl-6 mt-2 sm:mt-auto lg:flex lg:justify-end lg:mt-16 lg:h-20">
+      <header className=" flex justify-between relative z-20 pl-6 mt-2 sm:mt-auto lg:flex lg:justify-end lg:mt-16 lg:h-20">
         <BoneButton
           text="Favorites"
           onClick={() => navigate("/favorites")}
