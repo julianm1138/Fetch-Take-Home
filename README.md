@@ -1,6 +1,6 @@
 This is a frontend app built with the specifications and API provided by the Fetch FE Take-Home exercise. The tech stack is React, Tailwind, and TypeScript. 
 
-- The app features a fully responsive UI made up of a login page, a search page, and a favorites page where navigation is handled by React Router. React Context API is used to handle global state to pass favorted dogs to multiple components as needed.
+- The app features a fully responsive UI made up of a login page, a search page, and a favorites page where navigation is handled by React Router. React Context API is used to handle global state to pass favorited dogs to multiple components as needed.
 
 - Login Page handles calls to the login endpoint and navigates the user to Search Page upon successful endpoint access.
 
