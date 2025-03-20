@@ -34,11 +34,11 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="bg-[#efecec] overflow-x-hidden min-h-screen ">
+    <div className="bg-[#efecec] overflow-x-hidden min-h-screen">
       <Header />
 
-      <div className="grid lg:grid-cols-[20%_67%] lg:pb-1">
-        <div className="lg:block p-3 -mt-30 w-[100%] overflow-x-hidden overflow-y-hidden">
+      <div className="grid lg:grid-cols-[20%_67%] mt-80 lg:pb-1">
+        <div className="lg:block p-3 -mt-80 w-[100%] overflow-x-hidden overflow-y-hidden lg:-mt-105">
           <Filter onFilterChange={handleFilterChange} />
         </div>
 

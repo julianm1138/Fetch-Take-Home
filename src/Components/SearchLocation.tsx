@@ -1,20 +1,18 @@
 import Autocomplete from "react-google-autocomplete";
 import apiService from "../services/apiService";
-import { useRef } from "react";
 
 interface SearchLocationProps {
   onLocationSelect: (location: {
     city?: string | undefined;
     state?: string | undefined;
     postalCode?: string | undefined;
-  }) => Promise<void>;
+  }) => void;
 }
 
 const SearchLocation: React.FC<SearchLocationProps> = ({
   onLocationSelect,
 }) => {
   const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handlePlaceSelected = async (place: google.maps.places.PlaceResult) => {
     if (!place.address_components) {
@@ -61,12 +59,6 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
     }
   };
 
-  const handleClear = () => {
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
-  };
-
   return (
     <>
       <Autocomplete
@@ -78,9 +70,7 @@ const SearchLocation: React.FC<SearchLocationProps> = ({
         }}
         placeholder="Enter city, state, or ZIP"
         className="text-[#D35400] text-md bg-white px-3 rounded-md shadow-md w-full h-14 mb-6"
-        ref={inputRef}
       />
-      <button onClick={handleClear}>Clear Input</button>
     </>
   );
 };

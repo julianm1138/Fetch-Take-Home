@@ -71,12 +71,12 @@ export default function Main({ filters }: { filters: DogSearchParams }) {
   return (
     <div className="">
       {isLoading ? (
-        <p className="text-[#D35400] animate-bounce duration-[1s] font-light text-4xl">
+        <p className="text-[#D35400] animate-bounce duration-[1s] text-center font-light text-4xl">
           Loading...
         </p>
       ) : (
         <>
-          <div className="grid grid-cols-2 w-full justify-center items-center gap-2 px-2 sm:grid-cols-2 sm:gap-7 sm:px-2 lg:grid-cols-4 ">
+          <div className="grid grid-cols-2 w-full mt-30 justify-center items-center gap-2 px-2 lg:-mt-80 sm:grid-cols-2 sm:gap-7 sm:px-2 lg:grid-cols-4 ">
             {dogs.map((dog) => (
               <DogCard
                 key={dog.id}

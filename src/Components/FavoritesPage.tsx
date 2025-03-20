@@ -41,8 +41,8 @@ export default function FavoritesPage() {
       </div>
 
       {matchedDog ? (
-        <div className="flex flex-col items-center">
-          <h1 className="mb-10 text-2xl text-[#D35400]">
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="mb-10 text-2xl text-[#D35400] text-center">
             Congratulations, you matched with:
           </h1>
           <DogCard
@@ -55,9 +55,10 @@ export default function FavoritesPage() {
         </div>
       ) : (
         <>
-          <h1 className="flex justify-center mb-10 -mt-18 text-2xl text-[#D35400]">
+          <h1 className="flex justify-center items-center text-center mb-10 text-2xl text-[#D35400]">
             Your Favorites
           </h1>
+
           {favorites.length > 0 ? (
             <>
               <div className="flex justify-center">
@@ -68,6 +69,7 @@ export default function FavoritesPage() {
                   Generate Match!
                 </button>
               </div>
+
               <div className="grid grid-cols-2 place-items-center gap-2 mb-30 lg:grid lg:grid-cols-4 lg:place-items-center">
                 {favorites.map((favorite: Dog) => (
                   <DogCard
@@ -80,7 +82,7 @@ export default function FavoritesPage() {
               </div>
             </>
           ) : (
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center text-center gap-5">
               <p className="text-3xl text-[#D35400]">
                 No favorites currently added
               </p>

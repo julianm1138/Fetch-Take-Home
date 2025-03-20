@@ -75,10 +75,10 @@ export default function Filter({ onFilterChange }: FilterProps) {
   };
 
   return (
-    <div className="relative flex justify-center h-[39rem] -mt-12 lg:mt-5 lg:overflow-y-none ">
+    <div className="flex justify-center overflow-y-hidden  ">
       <button
         onClick={toggleOverlay}
-        className="flex justify-center h-12 items-center gap-3 mt-48 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
+        className="flex justify-center h-12 items-center gap-3 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
       >
         <MdFilterList size={24} /> Filters
       </button>
@@ -106,7 +106,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
             Location
           </label>
 
-          <SearchLocation />
+          <SearchLocation onLocationSelect={console.log} />
 
           <label className="flex justify-center text-[#D35400] font-semibold mb-3">
             Age Range
