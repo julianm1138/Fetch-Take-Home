@@ -76,7 +76,7 @@ export default function Main({ filters }: { filters: DogSearchParams }) {
         </p>
       ) : (
         <>
-          <div className="grid grid-cols-2 w-full mt-30 justify-center items-center gap-2 px-2 lg:-mt-80 sm:grid-cols-2 sm:gap-7 sm:px-2 lg:grid-cols-4 ">
+          <div className="grid grid-cols-2 w-full mt-45 place-items-center gap-4 px-2 lg:-mt-80 sm:grid-cols-2 sm:place-items-center sm:px-2 lg:grid-cols-4 ">
             {dogs.map((dog) => (
               <DogCard
                 key={dog.id}

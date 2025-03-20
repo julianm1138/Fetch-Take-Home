@@ -75,10 +75,10 @@ export default function Filter({ onFilterChange }: FilterProps) {
   };
 
   return (
-    <div className="flex justify-center overflow-y-hidden  ">
+    <div className="flex justify-center overflow-y-hidden  overflow-x-hidden">
       <button
         onClick={toggleOverlay}
-        className="flex justify-center h-12 items-center gap-3 bg-white text-[#D35400] p-3 w-[40%] rounded-md shadow-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
+        className="flex justify-center h-12 items-center gap-3 bg-white text-[#D35400] p-3 w-[40%] rounded-md lg:hidden sm:h-12 sm:w-40 cursor-pointer"
       >
         <MdFilterList size={24} /> Filters
       </button>
